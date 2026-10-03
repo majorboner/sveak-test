@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import handlebars from 'vite-plugin-handlebars';
 
 // Количество карточек
-const TOTAL_CARDS = 11;
+const TOTAL_CARDS = 65;
 // Количество кнопок в меню
 const TOTAL_MENU_BUTTONS = 24;
 
