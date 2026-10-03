@@ -1,0 +1,16 @@
+$bg: #efe5ff;
+$second: #dccbff;
+$gray: gray;
+$lgray: lightgray;
+
+$bar-h: 60px;
+$desktop: 1024px;
+$mobile-max: 1023.98px;
+$phone-max: 639.98px;
+
+$layouts: (
+  (0px, 639.98px, 2, 115px, 150px),
+  (640px, 1023.98px, 3, 170px, 220px),
+  (1024px, 1279.98px, 4, 130px, 180px),
+  (1280px, null, 5, 150px, 200px)
+);

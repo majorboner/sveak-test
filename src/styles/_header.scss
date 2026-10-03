@@ -1,0 +1,117 @@
+@use 'vars' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: $bar-h;
+  padding: 14px 20px;
+  background: $second;
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  @media (min-width: $desktop) {
+    position: static;
+    background: none;
+  }
+}
+
+// icons
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: $gray;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    width: 28px;
+    height: 28px;
+    background: currentColor;
+  }
+
+  &--play::before {
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+  }
+
+  &--circle::before {
+    border-radius: 50%;
+  }
+
+  &--square::before {
+    border-radius: 4px;
+  }
+}
+
+// burger button
+
+%lines {
+  content: '';
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  height: 3px;
+  border-radius: 2px;
+  background: $gray;
+
+  transition: all .3s;
+}
+
+.burger {
+  position: fixed;
+  top: calc(($bar-h - 40px) / 2);
+  display: block;
+  left: 20px;
+  z-index: 40;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+
+  &::before,
+  &::after,
+  span {
+    @extend %lines;
+  }
+
+  &::before {
+    top: 11px;
+  }
+
+  span {
+    top: 18px;
+  }
+
+  &::after {
+    top: 25px;
+  }
+
+  @media (min-width: $desktop) {
+    display: none;
+  }
+}
+
+.menu-toggle:checked~.burger {
+  &::before {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  &::after {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  span {
+    opacity: 0;
+  }
+}

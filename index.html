@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" class="no-transitions">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>sveak</title>
+  <meta name="description" content="testtask12312">
+  <script type="module" src="/src/main.js"></script>
+</head>
+
+<body>
+  <div class="layout">
+    <input type="checkbox" id="menu-toggle" class="menu-toggle hidden" autocomplete="off">
+
+    <nav class="menu">
+      <div class="menu__scroll">
+        <ul class="menu__list">
+          {{#each menu}}
+          <li>
+            <a class="menu__link{{#if active}} is-active{{/if}}" href="#">
+              <span class="menu__icon"></span>
+              <span class="menu__label" title="{{label}}">{{label}}</span>
+            </a>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+    </nav>
+    <label class="backdrop" for="menu-toggle"></label>
+    <label class="burger" for="menu-toggle"><span></span></label>
+
+    <div class="content">
+      <header class="header">
+        <div class="header__actions">
+          <button class="icon icon--play" type="button"></button>
+          <button class="icon icon--circle" type="button"></button>
+          <button class="icon icon--square" type="button"></button>
+        </div>
+      </header>
+
+      <main class="main">
+        <ul class="grid">
+          {{#each cards}}
+          <li class="card" style="--i: {{@index}}">
+            <a class="card__link" href="#">
+              <h2 class="card__title">{{title}}</h2>
+              <p class="card__text">{{text}}</p>
+            </a>
+          </li>
+          {{/each}}
+        </ul>
+      </main>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <h2 class="footer__title">What is Lorem Ipsum?</h2>
+    <p class="footer__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+      been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+      scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+      electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+      Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+      PageMaker including versions of Lorem Ipsum.</p>
+  </footer>
+</body>
+
+</html>

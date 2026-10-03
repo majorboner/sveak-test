@@ -1,0 +1,134 @@
+@use 'vars' as *;
+
+.menu {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 30;
+  width: min(260px, calc(100vw - 28px));
+  height: 100vh;
+  height: 100dvh;
+  background: $bg;
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: all .3s;
+
+  display: flex;
+  flex-direction: column;
+  padding-top: $bar-h;
+
+  &__scroll {
+    flex: 1;
+    min-height: 0;
+    padding: 8px 12px 24px;
+    border-top: 1px solid $lgray;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  &__list {
+    display: grid;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    height: 50px;
+
+    &.is-active {
+      background: rgba(240, 166, 255, 0.783);
+    }
+  }
+
+  &__icon {
+    flex: none;
+    width: 31px;
+    height: 31px;
+    border-radius: 50%;
+    background: $lgray;
+    transition: transform .2s;
+  }
+
+  &__label {
+    min-width: 0;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: rgba(0, 0, 0, .5);
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: $mobile-max) {
+  .menu-toggle:checked~.menu {
+    transform: none;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+
+  .menu-toggle:checked~.backdrop {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media (max-width: $phone-max) {
+  .menu {
+    width: 100%;
+  }
+
+  body:has(.menu-toggle:checked) {
+    overflow: hidden;
+  }
+}
+
+@media (min-width: $desktop) {
+  .menu {
+    position: relative;
+    inset: auto;
+    z-index: auto;
+    width: auto;
+    height: auto;
+    contain: size;
+    background: none;
+    border-right: 2px solid $gray;
+    transform: none;
+    visibility: visible;
+    transition: none;
+
+    display: block;
+    padding-top: 0;
+
+    &__scroll {
+      position: sticky;
+      top: 0;
+      flex: none;
+      height: auto;
+      max-height: min(100vh, 100%);
+      max-height: min(100dvh, 100%);
+      padding: 40px 26px 40px 36px;
+      border-top: 0;
+    }
+  }
+
+  .backdrop {
+    display: none;
+  }
+}

@@ -1,0 +1,22 @@
+@mixin between($min, $max: null) {
+  @if $max {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  }
+
+  @else {
+    @media (min-width: $min) {
+      @content;
+    }
+  }
+}
+
+@mixin hide-incomplete-row($n) {
+  $first: '.card:nth-child(#{$n}n + 1):not(:first-child):nth-last-child(-n + #{$n - 1})';
+
+  #{$first},
+  #{$first}~.card {
+    display: none;
+  }
+}

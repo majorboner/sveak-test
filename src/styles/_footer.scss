@@ -1,0 +1,22 @@
+@use 'vars' as *;
+
+.footer {
+  padding: 14px;
+  background: $bg;
+
+  &__title {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  &__text {
+    max-width: 960px;
+    margin: 0;
+    font-size: 12px;
+  }
+
+  @media (min-width: $desktop) {
+    background: none;
+    border-top: 2px solid $gray;
+  }
+}
